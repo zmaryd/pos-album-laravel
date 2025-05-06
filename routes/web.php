@@ -1,8 +1,15 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\TransaksiController;
+
+Route::resource('genres', GenreController::class);
+Route::resource('albums', AlbumController::class);
+Route::resource('transaksi', TransaksiController::class)->only(['index', 'create', 'store']);
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 

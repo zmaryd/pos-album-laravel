@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ asset ('vendors') }}/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <!-- End plugin css for this page -->
+  <!-- End plugin css for this page --> 
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
   <!-- endinject -->

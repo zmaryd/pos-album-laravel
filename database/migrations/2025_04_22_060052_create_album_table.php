@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('album', function (Blueprint $table) {
             $table->id();
             $table->string('judul_album');
+            $table->string('artis');
+            $table->string('image');
+            $table->date('release_date');
             $table->foreignId('id_genre')->constrained('genre')->onDelete('cascade');
             $table->decimal('harga', 10, 2);
             $table->integer('stok');

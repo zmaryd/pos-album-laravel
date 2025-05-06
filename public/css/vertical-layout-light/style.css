@@ -116,6 +116,473 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+
+/* Custom Button Style: Uiverse.io by yaasiinaxmed */
+
+/* Ubah warna hover item menu di sidebar */
+/* Smooth transition untuk semua perubahan warna dan background */
+
+.album-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 10000px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.album-card:hover {
+  transform: scale(1.02);
+}
+
+.album-image {
+  flex-shrink: 0;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.album-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-info {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.album-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hover-effect:hover {
+  transform: scale(1.02);
+}
+
+.custom-shadow {
+  box-shadow: 0 400px 200px rgb(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+  .album-card {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .album-info {
+      text-align: left;
+      width: 100%;
+  }
+}
+
+
+.sidebar .nav .nav-item .nav-link,
+.sidebar .nav .nav-item .nav-link .menu-icon {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 600px;
+  background-color: #111; /* Warna latar belakang card */
+  color: white; /* Warna teks */
+  border-radius: 12px; /* Radius border card */
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2); /* Shadow card */
+  
+}
+
+/* Hover efek */
+.sidebar .nav .nav-item .nav-link:hover {
+  background-color: #ff0000 !important; /* Merah */
+  color: #fff !important;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.sidebar .nav .nav-item .nav-link:hover .menu-icon {
+  color: #fff !important;
+}
+
+/* Aktif efek */
+.sidebar .nav .nav-item.active > .nav-link {
+  background-color: #ff0000 !important;
+  color: #fff !important;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.sidebar .nav .nav-item.active > .nav-link .menu-icon {
+  color: #fff !important;
+}
+
+
+/* Custom Button Style from Uiverse.io by reshades */
+.button {
+  position: relative;
+  background-color: transparent;
+  color: #fff;
+  width: 8.5em;
+  height: 2.9em;
+  border: #ffffff 0.2em solid;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  transition: all 0.6s ease;
+  overflow: hidden;
+  padding-right: 1em;
+}
+
+.button:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.button svg {
+  width: 1.6em;
+  margin-right: 0.8em;
+  position: absolute;
+  left: 0.8em;
+  transition: all 0.6s ease;
+  color: inherit;
+}
+
+.button:hover svg {
+  transform: translateX(5px);
+}
+
+.button .text {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+
+.button {
+  position: relative;
+  background-color: transparent;
+  color: #fff;
+  width: 8.5em;
+  height: 2.9em;
+  border: #ffffff 0.2em solid;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  transition: all 0.6s ease;
+  overflow: hidden;
+  padding-right: 1em;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button:hover {
+  background-color: #fefefe;
+  cursor: pointer;
+  color: #fff;
+}
+
+.button svg {
+  width: 1.6em;
+  margin-right: 0.8em;
+  position: static; /* Ubah dari absolute ke static */
+  transition: all 0.6s ease;
+  color: inherit;
+}
+
+.button:hover svg {
+  transform: translateX(5px);
+}
+
+.button .text {
+  margin-left: auto;
+}
+
+.button-red {
+  position: relative;
+  background-color: transparent;
+  color: #ff4d4f;
+  width: 8.5em;
+  height: 2.9em;
+  border: #ff4d4f 0.2em solid;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  transition: all 0.6s ease;
+  overflow: hidden;
+  padding-right: 1em;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button-red:hover {
+  background-color: #ff4d4f;
+  cursor: pointer;
+  color: #fff;
+}
+
+.button-red svg {
+  width: 1.6em;
+  margin-right: 0.8em;
+  position: static;
+  transition: all 0.6s ease;
+  color: inherit;
+}
+
+.button-red:hover svg {
+  transform: translateX(5px);
+}
+
+.button-red .text {
+  margin-left: auto;
+}
+.button,
+.button-edit,
+.button-red {
+  position: relative;
+  background-color: transparent;
+  color: #fff;
+  width: 5em;
+  height: 2.9em;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  font-weight: 30;
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+.button {
+  border: #ffffff 0.1em solid;
+}
+
+.button:hover {
+  background-color: #ffffff30;
+  cursor: pointer;
+}
+
+.button-red {
+  border: #ff4d4f 0.1em solid;
+}
+
+.button-red:hover {
+  background-color:  #ff0b0b30;
+  cursor: pointer;
+}
+
+.button-edit {
+  border: #ffffff 0.1em solid;
+}
+
+.button-edit:hover {
+  background-color: #ffffff30;
+  cursor: pointer;
+}
+
+
+
+.btn-album-custom {
+  --color: #ff0000;
+  font-family: inherit;
+  display: inline-block;
+  width: 10em;
+  height: 2.5em;
+  line-height: 2.5em;
+  overflow: hidden;
+  cursor: pointer;  
+  font-size: 17px;
+  z-index: 1;
+  color: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  position: relative;
+  background: transparent;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 13px;
+}
+
+.btn-album-custom::before {
+  position: absolute;
+  content: "";
+  background: var(--color);
+  width: 500px;
+  height: 100px;
+  z-index: -1;
+  border-radius: 50%;
+  top: 100%;
+  left: 100%;
+  transition: 0.3s all;
+}
+
+.btn-album-custom:hover {
+  color: white;
+}
+
+.btn-album-custom:hover::before {
+  top: -30px;
+  left: -30px;
+}
+.custom-shadow {
+  box-shadow: 0 400px 200px rgb(0, 0, 0); /* tambahkan efek bayangan lembut */
+}
+
+.card-shadow-behind {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2) !important;
+  transition: box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.card-shadow-behind:hover {
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3) !important;
+}
+
+.card-custom {
+  background-color: #111;
+  color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Shadow di belakang card */
+.shadow-behind {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.card-title {
+  color: #ffffff;
+}
+
+/* Library CSS untuk Section Card */
+.album-card-section .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.album-card-section .card-item {
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background-color: #111;
+  color: #ffffff;
+  overflow: hidden;
+  width: calc(33.33% - 10px); /* Menyesuaikan 3 item per baris */
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.album-card-section .card-item:hover {
+  transform: translateY(-5px); /* Efek hover untuk card */
+}
+
+.album-card-section .card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.album-card-section .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-card-section .card-body {
+  padding: 15px;
+}
+
+.album-card-section .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.album-card-section .card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.album-card-section .card-footer {
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.album-card-section .card-footer .button,
+.album-card-section .card-footer .button-edit,
+.album-card-section .card-footer .button-red {
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.album-card-section .card-footer .button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.album-card-section .card-footer .button:hover {
+  background-color: #45a049;
+}
+
+.album-card-section .card-footer .button-edit {
+  background-color: #ffa500;
+  color: white;
+}
+
+.album-card-section .card-footer .button-edit:hover {
+  background-color: #e68900;
+  color: white;
+}
+
+.album-card-section .card-footer .button-red {
+  background-color: #f44336;
+  color: white;
+}
+
+.album-card-section .card-footer .button-red:hover {
+  background-color: #e53935;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .album-card-section .card-item {
+      width: calc(50% - 10px); /* 2 item per baris pada layar lebih kecil */
+  }
+}
+
+@media (max-width: 480px) {
+  .album-card-section .card-item {
+      width: 100%; /* 1 item per baris pada layar sangat kecil */
+  }
+}
+
+
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -11081,11 +11548,67 @@ fieldset:disabled .wizard > .actions a,
   pointer-events: none;
 }
 
+
+.navbar,
+.navbar-wrapper,
+.navbar-menu-wrapper {
+  box-shadow: none !important;  /* Menghapus shadow */
+}
+
+
+/* Navbar Custom Warna - Mengubah warna navbar menjadi hitam gelap */
+.navbar,
+.navbar-menu-wrapper,
+.dropdown-menu.navbar-dropdown {
+  background-color: #000000 !important; /* Mengubah latar belakang navbar menjadi hitam gelap */
+  color: #fff !important;
+}
+
+/* Gaya link dan elemen navbar */
+.navbar .nav-link,
+.navbar .nav-item .dropdown-item,
+.navbar .navbar-toggler .icon-menu,
+.navbar .input-group-text,
+.navbar i,
+.navbar span {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+
+/* Menghapus search bar */
+.navbar input#navbar-search-input {
+  display: none !important; /* Menyembunyikan search bar */
+}
+
+/* Gaya ketika search bar dalam keadaan fokus */
+.navbar input#navbar-search-input:focus {
+  border-color: #ffd429 !important; /* Warna border saat fokus */
+  background-color: #444 !important; /* Warna latar belakang saat fokus */
+  outline: none !important; /* Menghilangkan outline default */
+}
+
+/* Gaya ikon search yang berada di dalam input */
+.navbar #navbar-search-icon {
+  display: none !important;  /* Menyembunyikan ikon search */
+}
+
+
+
+/* Menambahkan hover effect untuk item dropdown */
+.navbar .dropdown-item:hover {
+  background-color: #3e3d3a !important; /* Hover effect pada item dropdown */
+}
+
+
 .btn-primary, .wizard > .actions a {
   color: #fff;
   background-color: #4B49AC;
   border-color: #4B49AC;
 }
+
+
+
+
 
 .btn-primary:hover, .wizard > .actions a:hover {
   color: #fff;
@@ -28835,8 +29358,9 @@ div.tagsinput span.tag a {
   margin: auto;
 }
 
+/* INI NAVBAR */
 .navbar .navbar-menu-wrapper {
-  background: #ffffff;
+  background: #000;
   transition: width 0.25s ease;
   -webkit-transition: width 0.25s ease;
   -moz-transition: width 0.25s ease;
@@ -28911,6 +29435,8 @@ div.tagsinput span.tag a {
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-search {
   margin-left: 2rem;
 }
+
+
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-search .input-group, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-search .asColorPicker-wrap {
   border-radius: 4px;
