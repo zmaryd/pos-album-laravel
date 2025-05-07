@@ -122,6 +122,95 @@
 /* Ubah warna hover item menu di sidebar */
 /* Smooth transition untuk semua perubahan warna dan background */
 
+/* Ubah warna teks pada judul */
+.custom-header {
+  color: #2d3e50; /* Sesuaikan warna yang diinginkan */
+}
+
+/* Ubah warna teks label */
+.custom-label {
+  color: #495057; /* Sesuaikan warna yang diinginkan */
+}
+
+/* Ubah warna input teks */
+.form-control {
+  color: #343a40; /* Sesuaikan warna teks input */
+}
+
+/* Mengubah warna teks tombol jika perlu */
+.btn-success {
+  color: #fff; /* Teks tombol hijau */
+  background-color: #28a745; /* Warna tombol */
+}
+
+.btn-secondary {
+  color: #fff; /* Teks tombol abu-abu */
+  background-color: #6c757d; /* Warna tombol */
+}
+
+
+.btn-kembali-outline {
+  border: 1px solid #ff0000;
+  background-color: transparent;
+  color: #ff0000;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+
+
+.btn-kembali-outline:hover {
+  background-color: #ff000043;
+  color: #ff0000;
+  text-decoration: none;
+}
+
+.btn-kembali-outline i {
+  transition: transform 0.3s ease;
+}
+
+.btn-kembali-outline:hover i {
+  transform: translateX(-5px);
+}
+
+
+.album-detail-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 10000px;
+  margin: 0 auto;
+  margin-bottom: 1000px;
+  background:
+    linear-gradient(135deg, rgba(255, 0, 0, 0.026), rgba(255, 0, 0, 0.05) 80%),
+    black; /* Background hitam dengan efek merah */
+  color: white !important;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+.album-info {
+  font-size: 1.2rem; /* Ukuran default untuk teks dalam album-info */
+}
+
+.album-title {
+  font-size: 1.5rem; /* Judul album lebih besar */
+  font-weight: bold;
+}
+
+.album-info p {
+  font-size: 1.25rem; /* Ukuran font untuk informasi lainnya */
+}
+
+.album-info strong {
+  font-weight: 600; /* Membuat teks kuat (bold) untuk label seperti "Artis:", "Genre:", dll */
+}
+
+
 .album-card {
   display: flex;
   align-items: center;
@@ -130,10 +219,50 @@
   margin: 0 auto;
   background-color: #fff;
   padding: 20px;
+  margin-bottom: 100px;
   border-radius: 25px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   flex-wrap: wrap;
+  
+}
+
+.button-edit:hover {
+  color: #fff; /* Tetap putih saat hover */
+}
+
+.album-card {
+  position: relative;
+  background:
+      linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05) 80%),
+      black; /* Gradient di atas background hitam */
+  color: white !important;
+  /* border: 2px solid rgb(71, 0, 0); */ /* <- Ini dihapus */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+
+
+.custom-btn-back {
+  position: right;
+  bottom: 15px;
+  right: 15px;
+  padding: 10px 20px; /* Sesuaikan ukuran tombol */
+}
+
+.custom-genre-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0) 80%) !important;
+  color: #ff1414 !important;
+  /* Menambahkan sedikit warna merah */
+}
+
+.custom-btn-back {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 10px 20px; /* Sesuaikan ukuran tombol */
 }
 
 .album-card:hover {

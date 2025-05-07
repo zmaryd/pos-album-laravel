@@ -1,7 +1,7 @@
 @include('layout.header')
 
 <div class="container mt-4">
-    <h2 class="text-black">Daftar Album</h2>
+    <h2 class="text-black">Stock Album</h2>
     
     <div class="d-flex justify-content-end mb-3">
         <a href="{{ route('albums.create') }}" class="btn-album-custom">+ Tambah Album</a>
@@ -39,9 +39,11 @@
                     </a>
                 
                     <!-- Tombol Edit -->
-                    <button href="{{ route('albums.edit', $album->id) }}" class="button-edit text-decoration-none">
+                    <!-- Tombol Edit -->
+                    <a href="{{ route('albums.edit', $album->id) }}" class="button-edit text-decoration-none">
                         <div class="text">Edit</div>
-                    </button    >
+                    </a>
+
                 
                     <!-- Tombol Hapus -->
                     <form action="{{ route('albums.destroy', $album->id) }}" method="POST" onsubmit="return confirm('Yakin ingin hapus?');">
