@@ -116,37 +116,32 @@ a
       <nav class="sidebar sidebar-offcanvas" style="background-color: #000000; color: #000000; overflow: hidden;" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html" style="color: #ffffff;">
+            <a class="nav-link" href="{{ route('dashboard') }}" style="color: #ffffff;">
               <i class="icon-grid menu-icon" style="color: #ea6a69;"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html" style="color: #fff;">
+            <a class="nav-link" href="" style="color: #fff;">
+              <i class="icon-file menu-icon" style="color: #ea6a69;"></i>
+              <span class="menu-title">transaksi</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('genres.index') }}" style="color: #fff;">
+              <i class="icon-paper menu-icon" style="color: #ea6a69;"></i>
+              <span class="menu-title">Genre</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('transaksi.index') }}" style="color: #fff;">
               <i class="icon-file menu-icon" style="color: #ea6a69;"></i>
               <span class="menu-title">Laporan Album</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html" style="color: #fff;">
-              <i class="icon-paper menu-icon" style="color: #ea6a69;"></i>
-              <span class="menu-title">Genre</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html" style="color: #fff;">
-              <i class="icon-paper menu-icon" style="color: #ea6a69;"></i>
-              <span class="menu-title">Menu Transaksi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html" style="color: #fff;">
-              <i class="icon-file menu-icon" style="color: #ea6a69;"></i>
-              <span class="menu-title">Laporan Transaksi</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html" style="color: #fff;">
+            <a class="nav-link" href="{{ route('albums.index') }}" style="color: #fff;">
               <i class="icon-disc menu-icon" style="color: #ea6a69;"></i>
               <span class="menu-title">Menu Album</span>
             </a>
@@ -156,3 +151,5 @@ a
 
       <!-- partial -->
       <div class="main-panel">
+
+      

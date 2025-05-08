@@ -1,36 +1,106 @@
-@include('layout.header')
+@extends('layout.header')
 
-<div class="content-wrapper container mt-5">
-    <h2 class="mb-4">Tambah Genre Baru</h2>
+@section('content')
+<div class="container mt-5">
+    <h2 class="mb-4 text-black">Transaksi Penjualan</h2>
 
-    <div class="card shadow-lg" style="border-radius: 12px; max-width: 600px; margin: 0 auto;">
-        <div class="card-body">
-            <form action="{{ route('genres.store') }}" method="POST">
-                @csrf
+    <form action="{{ route('transaksi.store') }}" method="POST" id="transaksiForm">
+        @csrf
 
-                <div class="mb-3">
-                    <label for="nama_genre" class="form-label">Nama Genre</label>
-                    <input type="text" class="form-control @error('nama_genre') is-invalid @enderror" name="nama_genre" value="{{ old('nama_genre') }}">
-                    @error('nama_genre')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+        <div class="card p-4 shadow-lg" style="border-radius: 12px; background-color: #111; color: white;">
+            <div class="mb-3">
+                <label for="nama_pembeli" class="form-label">Nama Pembeli</label>
+                <input type="text" class="form-control" name="nama_pembeli" id="nama_pembeli" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="kontak" class="form-label">Kontak</label>
+                <input type="text" class="form-control" name="kontak" id="kontak">
+            </div>
+
+            <hr>
+
+            <h5>Tambah Item</h5>
+            <div id="items-wrapper">
+                <div class="item-row d-flex align-items-center gap-2 mb-2">
+                    <select class="form-control" name="items[0][id_album]" required>
+                        <option value="">-- Pilih Album --</option>
+                        @foreach ($albums as $album)
+                            <option value="{{ $album->id }}" data-harga="{{ $album->harga }}">
+                                {{ $album->judul_album }} (Stok: {{ $album->stok }}) - Rp{{ number_format($album->harga, 0, ',', '.') }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <input type="number" name="items[0][jumlah_beli]" class="form-control jumlah-input" placeholder="Jumlah" min="1" required>
+                    <input type="number" name="items[0][subtotal]" class="form-control subtotal-input" placeholder="Subtotal" readonly>
+                    <button type="button" class="btn btn-danger btn-remove">×</button>
                 </div>
+            </div>
 
-                <div class="d-flex justify-content-between align-items-center">
-                    <!-- Custom Button Simpan -->
-                    <button type="submit" class="button d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="me-2" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                        <div class="text">Simpan</div>
-                    </button>
+            <button type="button" class="btn btn-secondary my-3" id="addItemBtn">+ Tambah Item</button>
 
-                    <!-- Tombol Batal biasa -->
-                    <a href="{{ route('genres.index') }}" class="btn btn-secondary">Batal</a>
-                </div>
-            </form>
+            <hr>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>Total: Rp<span id="total-display">0</span></h4>
+                <input type="hidden" name="total" id="total-input">
+                <button type="submit" class="btn btn-success">Konfirmasi Pembelian</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
-@include('layout.footer')
+<script>
+    let index = 1;
+
+    document.getElementById('addItemBtn').addEventListener('click', () => {
+        const wrapper = document.getElementById('items-wrapper');
+        const newRow = document.createElement('div');
+        newRow.classList.add('item-row', 'd-flex', 'align-items-center', 'gap-2', 'mb-2');
+        newRow.innerHTML = `
+            <select class="form-control" name="items[${index}][id_album]" required>
+                <option value="">-- Pilih Album --</option>
+                @foreach ($albums as $album)
+                    <option value="{{ $album->id }}" data-harga="{{ $album->harga }}">
+                        {{ $album->judul_album }} (Stok: {{ $album->stok }}) - Rp{{ number_format($album->harga, 0, ',', '.') }}
+                    </option>
+                @endforeach
+            </select>
+            <input type="number" name="items[${index}][jumlah_beli]" class="form-control jumlah-input" placeholder="Jumlah" min="1" required>
+            <input type="number" name="items[${index}][subtotal]" class="form-control subtotal-input" placeholder="Subtotal" readonly>
+            <button type="button" class="btn btn-danger btn-remove">×</button>
+        `;
+        wrapper.appendChild(newRow);
+        index++;
+    });
+
+    document.addEventListener('input', (e) => {
+        if (e.target.classList.contains('jumlah-input')) {
+            const row = e.target.closest('.item-row');
+            const select = row.querySelector('select');
+            const harga = parseFloat(select.options[select.selectedIndex].getAttribute('data-harga')) || 0;
+            const jumlah = parseInt(e.target.value) || 0;
+            const subtotal = harga * jumlah;
+            row.querySelector('.subtotal-input').value = subtotal;
+            hitungTotal();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-remove')) {
+            e.target.closest('.item-row').remove();
+            hitungTotal();
+        }
+    });
+
+    function hitungTotal() {
+        const subtotalInputs = document.querySelectorAll('.subtotal-input');
+        let total = 0;
+        subtotalInputs.forEach(input => {
+            total += parseFloat(input.value) || 0;
+        });
+        document.getElementById('total-display').textContent = total.toLocaleString('id-ID');
+        document.getElementById('total-input').value = total;
+    }
+</script>
+@endsection
