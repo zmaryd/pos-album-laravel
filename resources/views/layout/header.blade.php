@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+  @include('layout.header', ['class' => 'header'])
 
 <head>
+  
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
+  <title>Skydash Admin</title> 
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('vendors') }}/feather/feather.css">
   <link rel="stylesheet" href="{{ asset('vendors') }}/ti-icons/css/themify-icons.css">
@@ -23,68 +25,63 @@
 <body style="background-color: #ff0000; color: #fff;">
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <!-- Navbar Start -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background-color: #31302c; color: #fff; overflow: hidden;">
-      <!-- Brand/logo -->
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-left" style="background-color: #31302c;">
-        <a class="navbar-brand brand-logo mr-5" href="index.html">
-          <img src="{{ asset('images') }}/logo.svg" class="mr-2" alt="logo" />
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="{{ asset('images') }}/logo-mini.svg" alt="logo" />
-        </a>
-      </div>
-    
-      <!-- Menu -->
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="background-color: #31302c;">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="icon-menu" style="color: #000000;"></span>
-        </button>
-    
-        <!-- Search -->
-        <!-- Search -->
-<!-- Search -->
-<ul class="navbar-nav mr-lg-2 ml-3">
-  <li class="nav-item nav-search d-none d-lg-block">
-    <div class="input-group" style="flex-grow: 1;">
-      <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-        <span class="input-group-text" id="search" style="background-color: #ffffff; border: none;">
-          <i class="icon-search" style="color: #31302c;"></i>
-        </span>
-      </div>
-      <input type="text" class="form-control" id="navbar-search-input"
-        placeholder="Search now" aria-label="search" aria-describedby="search"
-        style="background-color: #000000; color: #31302c; border: none;">
+  <!-- Navbar Start -->
+  
+  <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="background-color: #31302c; color: #fff; overflow: hidden;">
+    <!-- Brand/logo -->
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-left" style="background-color: #31302c;">
+      <a class="navbar-brand brand-logo mr-5" href="index.html">
+        <img src="{{ asset('images') }}/logo.svg" class="mr-2" alt="logo" />
+      </a>
+      <a class="navbar-brand brand-logo-mini" href="index.html">
+        <img src="{{ asset('images') }}/logo-mini.svg" alt="logo" />
+      </a>
     </div>
-  </li>
-</ul>
-a
-
-    
-        <!-- Profile (Move this to the left) -->
-        <ul class="navbar-nav navbar-nav-left""> <!-- Change navbar-nav-right to navbar-nav-left -->
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{ asset('images') }}/faces/face28.jpg" alt="profile"/>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown" style="background-color: #31302c; color: #fff;">
-              <a class="dropdown-item" style="color: #fff;">
-                <i class="ti-settings" style="color: #fff;"></i> Settings
-              </a>
-              <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: #fff;">
-                <i class="ti-power-off" style="color: #fff;"></i> Logout
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrfa
-              </form>
+  
+    <!-- Menu -->
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between" style="background-color: #31302c;">
+      <!-- Toggler -->
+      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+        <span class="icon-menu" style="color: #ffffff;"></span>
+      </button>
+  
+      <!-- Search Bar -->
+      <ul class="navbar-nav mr-lg-2">
+        <li class="nav-item nav-search d-none d-lg-block">
+          <div class="input-group">
+            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+              <span class="input-group-text" id="search" style="background-color: #ffffff; border: none;">
+                <i class="icon-search" style="color: #31302c;"></i>
+              </span>
             </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    
+            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search" style="background-color: #ffffff; color: #31302c; border: none; border-radius: 4px;">
+          </div>
+        </li>
+      </ul>
+  
+      <!-- Profile -->
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item nav-profile dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+            <img src="{{ asset('images') }}/faces/face28.jpg" alt="profile"/>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown" style="background-color: #31302c; color: #fff;">
+            <a class="dropdown-item" style="color: #fff;">
+              <i class="ti-settings" style="color: #fff;"></i> Settings
+            </a>
+            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: #fff;">
+              <i class="ti-power-off" style="color: #fff;"></i> Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
 <!-- Navbar End -->
-
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper" style="background-color: #ffffff; color: #fff; border-radius: 12px; overflow: hidden;">

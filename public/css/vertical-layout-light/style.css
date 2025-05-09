@@ -122,7 +122,50 @@
 /* Ubah warna hover item menu di sidebar */
 /* Smooth transition untuk semua perubahan warna dan background */
 
-/* Ubah warna teks pada judul */z
+/* Ubah warna teks pada judul */
+
+/* Menjadikan header sticky */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;  /* Pastikan header tetap di atas konten lainnya */
+  background-color: #fff; /* Ganti dengan warna latar belakang header Anda */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Menambahkan sedikit bayangan agar terlihat lebih jelas */
+  transition: top 0.3s; /* Animasi ketika header sticky */
+}
+
+/* Sticky Header */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Agar navbar tetap di atas konten */
+  background-color: #31302c; /* Sesuaikan dengan warna navbar */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek visual */
+  transition: top 0.3s; /* Animasi saat sticky */
+}
+
+.main-panel {
+  margin-top: 60px; /* Sesuaikan tinggi header agar tidak tertutup */
+}
+
+
+.btn-tambah-album {
+  background-color: #fc000000 !important;
+  color: #000;
+  padding: 10px 16px !important;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0)!important;
+}
+
+.btn-tambah-album:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+
 .custom-header {
   color: #2d3e50; /* Sesuaikan warna yang diinginkan */
 }
@@ -527,6 +570,51 @@
 }
 
 
+/* Style untuk tombol Lihat Transaksi */
+.btn-custom-transaksi {
+  --color: #000000;
+  font-family: inherit;
+  display: inline-block;
+  width: 10em;
+  height: 2.5em;
+  line-height: 2.5em;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 17px;
+  z-index: 1;
+  color: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  position: relative;
+  background: transparent;
+  transition: 0.3s ease-in-out;
+  text-align: left;
+  text-decoration: none;
+  margin-right: 100px;
+}
+
+.btn-custom-transaksi:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+.btn-custom-transaksi svg {
+    fill: currentColor; /* Warna ikon mengikuti warna teks tombol */
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+    width: 20px; /* Ukuran ikon lebih kecil agar seimbang */
+    height: 20px; /* Sesuaikan ukuran ikon */
+    margin-bottom: 1.6px;
+    margin-left: 5px;
+}
+
+.btn-custom-transaksi:hover {
+    background-color: #000000; /* Warna latar belakang saat hover */
+    color: #fff; /* Warna teks dan ikon saat hover */
+}
+
+.btn-custom-transaksi:hover svg {
+    fill: #fff; /* Warna ikon saat hover */
+}
 
 .btn-album-custom {
   --color: #ff0000;
@@ -547,8 +635,70 @@
   transition: 0.3s ease-in-out;
   text-align: center;
   text-decoration: none;
-  margin-right: 13px;
+  margin-left: 95px;
 }
+
+@media screen and (max-width: 768px) {
+  .btn-album-custom {
+    width: 8em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 15px;
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 1007px) {
+  .btn-album-custom {
+    width: 9em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 15px;
+    margin-left: 35px;
+  }
+}
+
+@media screen and (max-width: 1029px) {
+  .btn-album-custom {
+    width: 9em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 15px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 1334px) {
+  .btn-album-custom {
+    width: 9em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 20px;
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 1347px) {
+  .btn-album-custom {
+    width: 9em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 20px;
+    margin-left: 5px;
+  }
+}
+
+
+@media screen and (max-width: 1418px) {
+  .btn-album-custom {
+    width: 9em;
+    height: 2.2em;
+    line-height: 2.2em;
+    font-size: 20px;
+    margin-left: 38px;
+  }
+}
+
 
 .btn-album-custom::before {
   position: absolute;
@@ -561,15 +711,18 @@
   top: 100%;
   left: 100%;
   transition: 0.3s all;
+  text-decoration: none;
 }
 
 .btn-album-custom:hover {
   color: white;
+  text-decoration: none;
 }
 
 .btn-album-custom:hover::before {
   top: -30px;
   left: -30px;
+  text-decoration: none;
 }
 .custom-shadow {
   box-shadow: 0 400px 200px rgb(0, 0, 0); /* tambahkan efek bayangan lembut */

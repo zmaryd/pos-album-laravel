@@ -1,29 +1,51 @@
 @include('layout.header')
 
 <div class="container-fluid mt-4">
-    <h2 class="text-black">Stock Album</h2>
-
-    <div class="d-flex justify-content-between mb-3">
-        <a href="{{ route('albums.create') }}" class="btn-album-custom">+ Tambah Album</a>
-        <button id="toggleMenu" class="btn btn-dark">🛒 Lihat Transaksi</button>
+    <div class="container-fluid mt-4">
+        <h2 class="text-black text-center">Stock Album</h2>
     </div>
+    
+
+    <div class="d-flex justify-content-between mb-2">
+        <a href="{{ route('albums.create') }}" class="btn-album-custom">+ Tambah Album</a>
+    
+        <button id="toggleMenu" class="btn-custom-transaksi">
+            <!-- SVG Icon Cart -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="90" height="90" fill="currentColor">
+                <g> 
+                    <path fill="none" d="M0 0h24v24H0z"/>
+                    <path d="M7 8V6a5 5 0 1 1 10 0v2h3a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3zm0 2H5v10h14V10h-2v2h-2v-2H9v2H7v-2zm2-2h6V6a3 3 0 0 0-6 0v2z"/>
+                </g>
+            </svg>
+            <span>Lihat Transaksi</span>
+        </button>
+    </div>
+    
+    
+
+    
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <!-- Wrapper Utama -->
     <div class="layout-wrapper d-flex transition" id="layoutWrapper">
-        <!-- Kolom Kiri: Album -->
         <div class="content-album flex-grow-1 pe-3">
-            <div class="row" style="gap: 15px; justify-content: center;">
+            <div class="row" style="gap: 30px; justify-content: center;">
                 @forelse ($albums as $album)
                 <div class="card-wrapper" style="box-shadow:0 7px 15px 0 rgba(0, 0, 0, 0.2);">
                     <div class="card h-100 shadow-lg" style="background-color: #111; color: #ffffff; border-radius: 12px;">
                         @if($album->image)
-                        <div style="width: 100%; aspect-ratio: 1 / 1;">
+                        <div class="image-container" style="width: 100%; aspect-ratio: 1 / 1; position: relative;">
                             <img src="{{ asset('images/' . $album->image) }}" class="card-img-top" alt="Gambar Album"
-                                style="width: 100%; height: 100%; object-fit: cover;">
+                                style="width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                            <button class="btn-tambah-album"
+                                data-album="{{ $album->id }}"
+                                data-nama="{{ $album->judul_album }}"
+                                data-harga="{{ $album->harga }}"
+                                data-img="{{ asset('images/' . $album->image) }}">
+                                +
+                            </button>
                         </div>
                         @endif
                         <div class="card-body card-body-inner-shadow">
@@ -36,7 +58,7 @@
                                 <strong>Stok:</strong> {{ $album->stok }}
                             </p>
                         </div>
-                        <div class="card-footer d-flex justify-content-between" style="background-color: #1a1a1a; border-top: 1px solid #333; gap: 0.5rem;">
+                        <div class="card-footer d-flex justify-content-between" style="background-color: #00000000; border-top: 1px solid #333; gap: 0.5rem;">
                             <a href="{{ route('albums.show', $album->id) }}" class="button text-decoration-none">
                                 <div class="text">Detail</div>
                             </a>
@@ -50,8 +72,6 @@
                                     <div class="text">Hapus</div>
                                 </button>
                             </form>
-                            <!-- Tombol Tambah ke Transaksi -->
-                            <button class="btn btn-warning add-to-cart" data-album="{{ $album->id }}" data-nama="{{ $album->judul_album }}" data-harga="{{ $album->harga }}" data-img="{{ asset('images/' . $album->image) }}">+</button>
                         </div>
                     </div>
                 </div>
@@ -61,14 +81,11 @@
             </div>
         </div>
 
-        <!-- Kolom Kanan: Menu Transaksi INI MENU TRANSAKSI --> 
         <div class="menu-transaksi-wrapper" id="menuTransaksi">
             <div class="card shadow p-3 h-100" style="background-color: #111; border-radius: 12px; color: white;">
                 <h5>Transaksi Kasir</h5>
                 <hr style="border-color: #555;">
-                <ul class="list-unstyled mb-3" id="transaksiList">
-                    <!-- Daftar transaksi yang dipilih akan masuk sini -->
-                </ul>
+                <ul class="list-unstyled mb-3" id="transaksiList"></ul>
                 <div class="mb-3">
                     <strong>Total: Rp <span id="totalPrice">0</span></strong>
                 </div>
@@ -91,7 +108,7 @@
     }
 
     .layout-wrapper.show-menu .menu-transaksi-wrapper {
-        width: 350px;
+        width: 450px;
     }
 
     .transaksi-item {
@@ -124,6 +141,26 @@
         padding: 5px;
         cursor: pointer;
     }
+
+    .image-container .btn-tambah-album {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #fc0000;
+        color: #000;
+        padding: 10px 16px !important;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+    }
+
+    .image-container .btn-tambah-album:hover {
+        background-color: #e0a800;
+        color: #000;
+    }
 </style>
 
 <script>
@@ -133,17 +170,14 @@
 
     let totalHarga = 0;
 
-    // Fungsi untuk menambahkan album ke daftar transaksi
     function addToTransaksi(albumId, albumNama, albumHarga, albumImg) {
         const transaksiList = document.getElementById('transaksiList');
         const totalPrice = document.getElementById('totalPrice');
 
-        // Buat item transaksi baru
         const listItem = document.createElement('li');
         listItem.classList.add('transaksi-item');
         listItem.setAttribute('data-album-id', albumId);
 
-        // Menambahkan gambar, nama, harga, dan kuantitas ini ui buat item di transaksi nya
         listItem.innerHTML = `
             <div style="display: flex; align-items: center;">
                 <img src="${albumImg}" alt="${albumNama}">
@@ -159,11 +193,9 @@
         `;
         transaksiList.appendChild(listItem);
 
-        // Update total harga
         totalHarga += albumHarga;
         totalPrice.textContent = totalHarga.toLocaleString();
 
-        // Handle Quantity Buttons
         const increaseBtn = listItem.querySelector('.increase-btn');
         const decreaseBtn = listItem.querySelector('.decrease-btn');
         const quantitySpan = listItem.querySelector('.quantity');
@@ -183,24 +215,19 @@
         });
     }
 
-    // Fungsi untuk mengupdate total harga
     function updateTotalPrice(amount) {
         totalHarga += amount;
         document.getElementById('totalPrice').textContent = totalHarga.toLocaleString();
     }
 
-    // Event listener untuk tombol "Tambah ke Transaksi"
-    document.querySelectorAll('.add-to-cart').forEach(button => {
+    document.querySelectorAll('.btn-tambah-album').forEach(button => {
         button.addEventListener('click', function () {
             const albumId = this.getAttribute('data-album');
             const albumNama = this.getAttribute('data-nama');
             const albumHarga = parseInt(this.getAttribute('data-harga'));
             const albumImg = this.getAttribute('data-img');
 
-            // Menambahkan album ke transaksi
             addToTransaksi(albumId, albumNama, albumHarga, albumImg);
-
-            // Tampilkan menu transaksi
             document.getElementById('layoutWrapper').classList.add('show-menu');
         });
     });
